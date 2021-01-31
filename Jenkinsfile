@@ -43,7 +43,6 @@ node() {
                         export CHROME_BIN=google-chrome
                         rm -rf ansible/content-editor.zip
                         rm -rf content-editor
-                        rm -rf package-lock.json
                         node -v
                         npm install
                         cd app
