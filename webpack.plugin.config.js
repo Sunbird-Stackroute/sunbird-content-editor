@@ -166,7 +166,16 @@ module.exports = {
 				options: {
 					attributes: {
             list: [
-		    {attribute: 'data-src'}
+		    {
+                tag: 'img',
+                attribute: 'data-src',
+                type: 'src',
+              },
+              {
+                tag: 'img',
+                attribute: 'data-srcset',
+                type: 'srcset',
+              }
 					]
 					}
 					
