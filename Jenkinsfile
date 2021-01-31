@@ -43,13 +43,16 @@ node() {
                         export CHROME_BIN=google-chrome
                         rm -rf ansible/content-editor.zip
                         rm -rf content-editor
+                        rm -rf package--lock.json
                         node -v
+                        npm clean cache --force
                         npm install
                         cd app
                         bower cache clean
                         bower prune -f 
                         bower install --force -V
                         cd ..
+                        
                         
                         #grunt compress
                         #zip -r ce-docs.zip docs
