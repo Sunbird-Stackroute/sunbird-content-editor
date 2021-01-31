@@ -146,17 +146,13 @@ module.exports = {
 			test: require.resolve('./plugins/org.ekstep.viewecml-1.0/editor/libs/src/converter.js'),
 			use: [{
 				loader: 'expose-loader',
-				options: {
-         				 exposes: 'E2EConverter',
-        			}
+				options: 'E2EConverter'
 			}]
 		}, {
 			test: require.resolve('./plugins/org.ekstep.assessmentbrowser-1.1/editor/libs/xml2json.js'),
 			use: [{
 				loader: 'expose-loader',
-				options: {
-         				 exposes: 'X2JS',
-        			}
+				options:'X2JS'
 			}]
 		},
 		{
@@ -164,9 +160,9 @@ module.exports = {
 			use: {
 				loader: 'html-loader',
 				options: {
-					exposes: {
+					
 					attrs: [':data-src']
-					}
+					
 				}
 			}
 		},
@@ -177,27 +173,27 @@ module.exports = {
 				{
 					loader: 'css-loader',
 					options: {
-						exposes: {
+						
 							sourceMap: false,
 							minimize: true,
 							'preset': 'advanced',
 							discardComments: {
 								removeAll: true
 							}
-						}
+						
 					}
 				},
 				{
 					loader: 'sass-loader',
 					options: {
-						exposes: {
+						
 						sourceMap: false,
 						minimize: true,
 						'preset': 'advanced',
 						discardComments: {
 							removeAll: true
 						}
-						}
+						
 					}
 				}
 			]
@@ -208,11 +204,11 @@ module.exports = {
 				{
 					loader: 'url-loader',
 					options: {
-						exposes: {
+						
 						limit: 50, // it's important
 						outputPath: './images/assets',
 						name: '[name].[ext]'
-						}
+						
 					}
 				}
 			]
