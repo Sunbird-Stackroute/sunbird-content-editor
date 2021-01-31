@@ -50,6 +50,7 @@ node() {
                         bower prune -f 
                         bower install --force -V
                         cd ..
+                        
                         #grunt compress
                         #zip -r ce-docs.zip docs
                         gulp packageCorePlugins
