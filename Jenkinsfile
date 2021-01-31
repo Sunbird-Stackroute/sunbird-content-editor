@@ -45,7 +45,6 @@ node() {
                         rm -rf content-editor
                         rm -rf package--lock.json
                         node -v
-                        npm clean cache --force
                         npm install
                         cd app
                         bower cache clean
