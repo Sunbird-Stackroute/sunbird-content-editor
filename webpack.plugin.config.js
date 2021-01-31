@@ -146,13 +146,17 @@ module.exports = {
 			test: require.resolve('./plugins/org.ekstep.viewecml-1.0/editor/libs/src/converter.js'),
 			use: [{
 				loader: 'expose-loader',
-				options: 'E2EConverter'
+				options: {
+         				 exposes:  'E2EConverter'
+        			}
 			}]
 		}, {
 			test: require.resolve('./plugins/org.ekstep.assessmentbrowser-1.1/editor/libs/xml2json.js'),
 			use: [{
 				loader: 'expose-loader',
-				options:'X2JS'
+				options: {
+         				 exposes:  'X2JS'
+        			}
 			}]
 		},
 		{
@@ -160,8 +164,11 @@ module.exports = {
 			use: {
 				loader: 'html-loader',
 				options: {
-					
-					attrs: [':data-src']
+					attributes: {
+            list: [
+		    {attribute: 'data-src'}
+					]
+					}
 					
 				}
 			}
