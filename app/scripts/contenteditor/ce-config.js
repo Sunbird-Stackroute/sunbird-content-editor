@@ -13,7 +13,8 @@ org.ekstep.contenteditor.config = {
 		{ 'id': 'org.ekstep.preview', 'ver': '1.1', 'type': 'plugin' },
 		{ 'id': 'org.ekstep.editcontentmeta', 'ver': '1.1', 'type': 'plugin' },
 		{ 'id': 'org.ekstep.quiz', 'ver': '1.1', 'type': 'plugin' },
-		{ 'id': 'org.ekstep.video', 'ver': '1.0', 'type': 'plugin' }
+		{ 'id': 'org.ekstep.video', 'ver': '1.0', 'type': 'plugin' },
+		{ 'id': 'org.ekstep.zoom.video', 'ver': '1.0', 'type': 'plugin' }
 	],
 	corePluginsPackaged: true,
 	dispatcher: 'local',
