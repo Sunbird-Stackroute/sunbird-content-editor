@@ -24,21 +24,14 @@ node() {
                     commit_hash = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
                     // branch_name = params.github_release_tag.split('_')[0].split('\\.')[0] + "." + params.github_release_tag.split('_')[0].split('\\.')[1]
                     branch_name = params.github_release_tag
-                    println("release_tag: " + params.github_release_tag)
-                    println("branch_name: " + branch_name)
                     println(ANSI_BOLD + ANSI_YELLOW + "github_release_tag specified, building from github_release_tag: " + params.github_release_tag + ANSI_NORMAL)
                     sh "git clone https://github.com/project-sunbird/sunbird-content-plugins.git plugins"
-                    sh """
-                        checkout_tag=\$(git ls-remote --tags origin "$branch_name*" | grep -o "$branch_name.*" | sort -V | tail -n1)
-                        echo $checkout_tag
-                    """
-                    sh """
-                        cd plugins
-                        git fetch --all
-                        git checkout -b ${branch_name}
-                    """
+                    sh "checkout_tag=\$(git ls-remote --tags origin "$branch_name*" | grep -o "$branch_name.*" | sort -V | tail -n1)"
+                    sh "echo checkout_tag"
+                    println(checkout_tag)
+                    sh "echo ${checkout_tag}"
+                    sh "cd plugins && git fetch --all && git checkout tags/\${checkout_tag} -b \${checkout_tag}"
                     // checkout_tag=\$(git ls-remote --tags origin $branch_name | grep -o "$branch_name.*" | sort -V | tail -n1)
-                    // git checkout tags/\${checkout_tag} -b \${checkout_tag}
                 }
                 echo "artifact_version: " + artifact_version
 
