@@ -27,9 +27,9 @@ node() {
                     sh "git clone https://github.com/project-sunbird/sunbird-content-plugins.git plugins"
                     sh """
                         cd plugins
-                        checkout_tag=\$(git ls-remote --tags origin $branch_name* | grep -o "$branch_name.*" | sort -V | tail -n1)
+                        checkout_tag=\$(git ls-remote --tags origin $branch_name | grep -o "$branch_name.*" | sort -V | tail -n1)
                         git checkout tags/\${checkout_tag} -b \${checkout_tag}
-                        
+
                     """
                 }
                 echo "artifact_version: " + artifact_version
@@ -47,29 +47,29 @@ node() {
                         npm install
                         cd app
                         bower cache clean
-                        bower prune -f 
+                        bower prune -f
                         bower install --force -V
                         cd ..
                         #grunt compress
                         #zip -r ce-docs.zip docs
                         gulp packageCorePlugins
-                        #npm install 
+                        #npm install
                         npm run build-plugins
                         #cd ..
                         npm run build
                         #npm run test
                     """
                 }
-                
+
                 //stage('Publish_test_results') {
-               //cobertura autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: 'coverage/PhantomJS*/cobertura-coverage.xml', conditionalCoverageTargets: '70, 0, 0', failUnhealthy: false, failUnstable: false, lineCoverageTargets: '80, 0, 0', maxNumberOfBuilds: 0, methodCoverageTargets: '80, 0, 0', onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false 
+               //cobertura autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: 'coverage/PhantomJS*/cobertura-coverage.xml', conditionalCoverageTargets: '70, 0, 0', failUnhealthy: false, failUnstable: false, lineCoverageTargets: '80, 0, 0', maxNumberOfBuilds: 0, methodCoverageTargets: '80, 0, 0', onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false
             //}
-                
+
                 stage('ArchiveArtifacts') {
                     sh """
                         mkdir content-editor-artifacts
                         cp content-editor.zip content-editor-artifacts
-                        zip -j  content-editor-artifacts.zip:${artifact_version}  content-editor-artifacts/*                      
+                        zip -j  content-editor-artifacts.zip:${artifact_version}  content-editor-artifacts/*
                     """
                     archiveArtifacts "content-editor-artifacts.zip:${artifact_version}"
                     sh """echo {\\"artifact_name\\" : \\"content-editor-artifacts.zip\\", \\"artifact_version\\" : \\"${artifact_version}\\", \\"node_name\\" : \\"${env.NODE_NAME}\\"} > metadata.json"""
