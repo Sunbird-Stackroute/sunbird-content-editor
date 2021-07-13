@@ -30,6 +30,7 @@ node() {
                     sh "git clone https://github.com/project-sunbird/sunbird-content-plugins.git plugins"
                     sh """
                         cd plugins
+                        git fetch --all
                         git checkout tags/srlrelease-3.4.0 -b srlrelease-3.4.0
                     """
                     // checkout_tag=\$(git ls-remote --tags origin $branch_name | grep -o "$branch_name.*" | sort -V | tail -n1)
