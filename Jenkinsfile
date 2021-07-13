@@ -31,7 +31,6 @@ node() {
                         cd plugins
                         git fetch --all
                         checkout_tag=\$(git ls-remote --tags origin $branch_name* | grep -o "$branch_name.*" | sort -V | tail -n1)
-                        echo $checkout_tag
                         git checkout tags/\${checkout_tag} -b \${checkout_tag}
                     """
                     // checkout_tag=\$(git ls-remote --tags origin $branch_name | grep -o "$branch_name.*" | sort -V | tail -n1)
